@@ -1,0 +1,45 @@
+{
+  "name": "@fmfe/lib-sql",
+  "version": "1.0.0",
+  "description": "集成mysql,sqlserver等数据库的第三方库",
+  "main": "index.js",
+  "scripts": {
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "commitmsg": "npm run lint && validate-commit-msg",
+    "lint": "./node_modules/.bin/eslint .",
+    "lint:fix": "./node_modules/.bin/eslint . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fmfe/lib-sql.git"
+  },
+  "keywords": [
+    "mysql",
+    "sqlserver",
+    "nodejs"
+  ],
+  "author": "silenceboychen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fmfe/lib-sql/issues"
+  },
+  "homepage": "https://github.com/fmfe/lib-sql#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "mssql": "^4.1.0",
+    "mysql": "^2.15.0"
+  },
+  "devDependencies": {
+    "@fmfe/eslint-config-fmfe-nodejs": "^0.0.1",
+    "conventional-changelog-cli": "^1.3.16",
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^4.19.0",
+    "husky": "^0.14.3",
+    "validate-commit-msg": "^2.14.0"
+  }
+}

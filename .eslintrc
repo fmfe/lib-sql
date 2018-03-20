@@ -1,0 +1,3 @@
+{
+  "extends": "@fmfe/eslint-config-fmfe-nodejs"
+}
