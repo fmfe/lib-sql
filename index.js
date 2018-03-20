@@ -1,5 +1,8 @@
 'use strict';
 
-const mysql = require('./lib/mysql');
+const _ = require('lodash');
+const rd = require('require-directory');
 
-exports.mysql = mysql;
+const libs = rd(module, './lib');
+
+_.assign(exports, libs);
