@@ -31,6 +31,7 @@
     }
   },
   "dependencies": {
+    "async": "^2.6.0",
     "mssql": "^4.1.0",
     "mysql": "^2.15.0"
   },
