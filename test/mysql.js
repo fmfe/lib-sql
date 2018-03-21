@@ -1,15 +1,19 @@
-'use strict';
-
+const test = require('ava');
 const sql = require('../index');
+const config = require('./config.json');
 
-const mysqlPool = sql.mysql.init({
-    database: 'test',
-    user: 'root',
-    password: '123456'
-});
+const mysqlPool = sql.mysql.init(config.mysql);
 const _getNewSqlParamEntity = sql.mysql._getNewSqlParamEntity;
 
-async function test () {
+test('one select sql', async t => {
+    t.plan(1);
+    const sql1 = 'select * from ?? limit 2';
+    const data = await sql.mysql.exec(mysqlPool, sql1, ['tbl_user']);
+    t.is(data.length, 2);
+});
+
+test('get news contens', async t => {
+    t.plan(1);
     const sqlParamsEntity = [];
     const sql1 = 'insert ?? set name = ?, age = ?, sex = ?';
     const param1 = ['tbl_user', 'test1', 20, 1];
@@ -19,12 +23,7 @@ async function test () {
     const param2 = ['tbl_user', 'test2', 22, 0];
     sqlParamsEntity.push(_getNewSqlParamEntity(sql2, param2));
     const data = await sql.mysql.execTrans(mysqlPool, sqlParamsEntity);
-
-    // const sql1 = 'select * from ??';
-    // const data = await sql.mysql.exec(mysqlPool, sql1, ['tbl_user']);
     console.log(data);
-}
-
-setTimeout(() => {
-    test();
-}, 2000);
+    t.is(data.serverStatus, 2);
+    // t.is(res.body.code, 'SUCCESS');
+});
