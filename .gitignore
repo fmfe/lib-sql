@@ -1,3 +1,6 @@
 node_modules/
 yarn-error.log
 .nyc_output/
+.DB_Store
+coverage
+.vscode
