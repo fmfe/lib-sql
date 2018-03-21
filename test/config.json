@@ -5,5 +5,17 @@
         "database": "test",
         "user": "root",
         "password": "123456"
+    },
+    "mssql": {
+        "user": "sa",
+        "password": "1qaz@WSX",
+        "server": "192.168.0.255",
+        "database": "FM_OS_V3",
+        "port": 1433,
+        "pool": {
+            "min": 0,
+            "max": 10,
+            "idleTimeoutMillis": 3000
+        }
     }
 }

@@ -12,8 +12,8 @@ test('one select sql', async t => {
     t.is(data.length, 2);
 });
 
-test('get news contens', async t => {
-    t.plan(1);
+test('sql server exec transaction sql', async t => {
+    t.plan(2);
     const sqlParamsEntity = [];
     const sql1 = 'insert ?? set name = ?, age = ?, sex = ?';
     const param1 = ['tbl_user', 'test1', 20, 1];
@@ -23,7 +23,6 @@ test('get news contens', async t => {
     const param2 = ['tbl_user', 'test2', 22, 0];
     sqlParamsEntity.push(_getNewSqlParamEntity(sql2, param2));
     const data = await sql.mysql.execTrans(mysqlPool, sqlParamsEntity);
-    console.log(data);
     t.is(data.serverStatus, 2);
-    // t.is(res.body.code, 'SUCCESS');
+    t.pass();
 });
