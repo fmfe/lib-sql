@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "async": "^2.6.0",
+    "lodash": "^4.17.5",
     "mssql": "^4.1.0",
     "mysql": "^2.15.0",
     "require-directory": "^2.1.1"
