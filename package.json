@@ -1,6 +1,6 @@
 {
   "name": "@fmfe/lib-sql",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "集成mysql,sqlserver等数据库的第三方库",
   "main": "index.js",
   "scripts": {
