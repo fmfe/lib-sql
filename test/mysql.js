@@ -1,8 +1,7 @@
 const test = require('ava');
 const { mysql } = require('../index');
-const config = require('./config.json');
 
-const mysqlPool = mysql.init(config.mysql);
+const mysqlPool = mysql.init();
 const _getNewSqlParamEntity = mysql._getNewSqlParamEntity;
 
 test('one select sql', async t => {
@@ -12,7 +11,7 @@ test('one select sql', async t => {
     t.is(data.length, 2);
 });
 
-test('mssql exec transaction sql', async t => {
+test('mysql exec transaction sql', async t => {
     t.plan(2);
     const sqlParamsEntity = [];
     const sql1 = 'insert ?? set name = ?, age = ?, sex = ?';
