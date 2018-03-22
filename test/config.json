@@ -8,8 +8,8 @@
     },
     "mssql": {
         "user": "sa",
-        "password": "1qaz@WSX",
-        "server": "192.168.0.255",
+        "password": "654321",
+        "server": "127.0.0.1",
         "database": "FM_OS_V3",
         "port": 1433,
         "pool": {

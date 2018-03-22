@@ -1,18 +1,18 @@
 const test = require('ava');
-const sql = require('../index');
+const { mysql } = require('../index');
 const config = require('./config.json');
 
-const mysqlPool = sql.mysql.init(config.mysql);
-const _getNewSqlParamEntity = sql.mysql._getNewSqlParamEntity;
+const mysqlPool = mysql.init(config.mysql);
+const _getNewSqlParamEntity = mysql._getNewSqlParamEntity;
 
 test('one select sql', async t => {
     t.plan(1);
     const sql1 = 'select * from ?? limit 2';
-    const data = await sql.mysql.exec(mysqlPool, sql1, ['tbl_user']);
+    const data = await mysql.exec(mysqlPool, sql1, ['tbl_user']);
     t.is(data.length, 2);
 });
 
-test('sql server exec transaction sql', async t => {
+test('mssql exec transaction sql', async t => {
     t.plan(2);
     const sqlParamsEntity = [];
     const sql1 = 'insert ?? set name = ?, age = ?, sex = ?';
@@ -22,7 +22,7 @@ test('sql server exec transaction sql', async t => {
     const sql2 = 'insert ?? set name = ?, age = ?, sex = ?';
     const param2 = ['tbl_user', 'test2', 22, 0];
     sqlParamsEntity.push(_getNewSqlParamEntity(sql2, param2));
-    const data = await sql.mysql.execTrans(mysqlPool, sqlParamsEntity);
+    const data = await mysql.execTrans(mysqlPool, sqlParamsEntity);
     t.is(data.serverStatus, 2);
     t.pass();
 });
